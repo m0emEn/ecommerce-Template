@@ -4,7 +4,13 @@ import ProductsContainer from "../Components/ProductsContainer";
 import ProductsSlider from "../Components/ProductsSlider";
 import banner from "../assets/banner.jpeg";
 import { productData, productSlider } from "../assets/products";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 const HomePage = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   return (
     <main>
       <div className="banner">

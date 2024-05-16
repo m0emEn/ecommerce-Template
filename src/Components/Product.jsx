@@ -21,11 +21,11 @@ const Product = ({ product }) => {
     setProductImgIndex(index);
   };
   return (
-    <div className="container">
+    <div className="container productContainer">
       <div className="product">
         <div className="productMedia">
           <div className="mainProduct">
-            <img src={productImg} />
+            <img src={productImg} alt="product" />
           </div>
           <div className="relatedImgs">
             {product.availbleImgs &&
@@ -34,7 +34,7 @@ const Product = ({ product }) => {
                   src={img}
                   key={i}
                   alt="product"
-                  className={i == productImgIndex ? "imgSelected" : ""}
+                  className={i === productImgIndex ? "imgSelected" : ""}
                   onClick={() => imgHandler(i)}
                 />
               ))}
@@ -56,7 +56,7 @@ const Product = ({ product }) => {
                 <button
                   key={i}
                   className={
-                    i == currColor ? "productButton selected" : "productButton"
+                    i === currColor ? "productButton selected" : "productButton"
                   }
                   onClick={() => colorHandler(i)}
                 >
@@ -72,7 +72,7 @@ const Product = ({ product }) => {
                 <button
                   key={i}
                   className={
-                    i == currSize ? "productButton selected" : "productButton"
+                    i === currSize ? "productButton selected" : "productButton"
                   }
                   onClick={() => sizeHandler(i)}
                 >
