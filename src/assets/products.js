@@ -27,7 +27,8 @@ export const productData = [
     tag: "En Promotion !",
     mainImg: img1,
     hoverImg: img1_,
-    availbleImgs: [img1, img1_],
+    category: "anime",
+    availbleImgs: [img1, img1_, img1_, img1_, img1_],
     colors: ["noire", "beige"],
     sizes: ["xs", "s", "m", "l", "xl", "xxl"],
     stocks: [
@@ -46,6 +47,8 @@ export const productData = [
     tag: "En Promotion !",
     mainImg: img2_,
     hoverImg: img2,
+    category: "anime",
+
     colors: ["noire", "beige"],
     sizes: ["xs", "s", "m", "l", "xl", "xxl"],
     stocks: [
@@ -64,6 +67,8 @@ export const productData = [
     tag: "En Promotion !",
     mainImg: img3,
     hoverImg: img3,
+    category: "anime",
+
     colors: ["noire", "beige"],
     sizes: ["xs", "s", "m", "l", "xl", "xxl"],
     stocks: [
@@ -77,9 +82,11 @@ export const productData = [
   {
     id: 4,
     name: "Capuche Sasuke & Itachi",
-    newPrice: 48,
+    newPrice: 42,
     mainImg: img4,
     hoverImg: img4,
+    category: "anime",
+
     colors: ["noire", "beige"],
     sizes: ["xs", "s", "m", "l", "xl", "xxl"],
     stocks: [
@@ -98,6 +105,8 @@ export const productData = [
     tag: "En Promotion !",
     mainImg: img5_,
     hoverImg: img5,
+    category: "anime",
+
     colors: ["noire", "beige"],
     sizes: ["xs", "s", "m", "l", "xl", "xxl"],
     stocks: [
@@ -115,6 +124,8 @@ export const productData = [
     oldPrice: 58,
     tag: "En Promotion !",
     mainImg: img6,
+    category: "anime",
+
     colors: ["noire", "beige"],
     sizes: ["xs", "s", "m", "l", "xl", "xxl"],
     stocks: [
@@ -132,6 +143,8 @@ export const productData = [
     oldPrice: 58,
     tag: "En Promotion !",
     mainImg: img7,
+    category: "anime",
+
     colors: ["noire", "beige"],
     sizes: ["xs", "s", "m", "l", "xl", "xxl"],
     stocks: [
@@ -150,6 +163,86 @@ export const productData = [
     tag: "En Promotion !",
     mainImg: img8,
     hoverImg: img8_,
+    category: "anime",
+
+    colors: ["noire", "beige"],
+    sizes: ["xs", "s", "m", "l", "xl", "xxl"],
+    stocks: [
+      {
+        color: "beige",
+        size: "xs",
+        stock: 10,
+      },
+    ],
+  },
+  {
+    id: 9,
+    name: "Jogging En molleton non gratté",
+    newPrice: 49,
+    oldPrice: 58,
+    tag: "En Promotion !",
+    mainImg: img19,
+    hoverImg: img19_,
+    category: "femme",
+    colors: ["noire", "beige"],
+    sizes: ["xs", "s", "m", "l", "xl", "xxl"],
+    stocks: [
+      {
+        color: "beige",
+        size: "xs",
+        stock: 10,
+      },
+    ],
+  },
+  {
+    id: 10,
+    name: "Jogging En molleton non gratté",
+    newPrice: 45,
+    oldPrice: 58,
+    tag: "En Promotion !",
+    mainImg: img20,
+    hoverImg: img20_,
+    category: "femme",
+
+    colors: ["noire", "beige"],
+    sizes: ["xs", "s", "m", "l", "xl", "xxl"],
+    stocks: [
+      {
+        color: "beige",
+        size: "xs",
+        stock: 10,
+      },
+    ],
+  },
+  {
+    id: 11,
+    name: "Jogging En molleton non gratté",
+    newPrice: 48,
+    oldPrice: 58,
+    tag: "En Promotion !",
+    mainImg: img18,
+    hoverImg: img18_,
+    category: "femme",
+
+    colors: ["noire", "beige"],
+    sizes: ["xs", "s", "m", "l", "xl", "xxl"],
+    stocks: [
+      {
+        color: "beige",
+        size: "xs",
+        stock: 10,
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Jogging En molleton non gratté",
+    newPrice: 49,
+    oldPrice: 58,
+    tag: "En Promotion !",
+    mainImg: img19,
+    hoverImg: img19_,
+    category: "femme",
     colors: ["noire", "beige"],
     sizes: ["xs", "s", "m", "l", "xl", "xxl"],
     stocks: [

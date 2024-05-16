@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
 import Product from "./ProductCard";
-const ProductsContainer = ({ name, products, title }) => {
+const ProductsContainer = ({ name, initialProducts, title, filter }) => {
   return (
     <div className={name}>
       <h2 className="products-container-title">{title}</h2>
       <div className="container products-container">
-        {products.map((item, i) => (
+        {initialProducts.map((item, i) => (
           <Product item={item} key={i} />
         ))}
       </div>

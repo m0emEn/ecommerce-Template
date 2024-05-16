@@ -29,10 +29,10 @@ const Nav = () => {
             <Link to="/">
               <div className="nav-link">Acceuil</div>
             </Link>
-            <Link to="/">
+            <Link to="/products/anime">
               <div className="nav-link">Collection Anime</div>
             </Link>
-            <Link to="/">
+            <Link to="/products/femme">
               <div className="nav-link">Femmes</div>
             </Link>
             <Link to="/">
@@ -56,10 +56,10 @@ const Nav = () => {
           <Link to="/">
             <div className="nav-link">Acceuil</div>
           </Link>
-          <Link to="/">
+          <Link to="/products/anime">
             <div className="nav-link">Collection Anime</div>
           </Link>
-          <Link to="/">
+          <Link to="/products/femme">
             <div className="nav-link">Femmes</div>
           </Link>
           <Link to="/">

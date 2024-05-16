@@ -19,17 +19,17 @@ const HomePage = () => {
       <Berks />
       <ProductsContainer
         name={"productsShow"}
-        products={productSlider}
+        initialProducts={productSlider}
         title="Promotion Jogging femmes"
       />
       <ProductsSlider products={productSlider} />
       <ProductsContainer
         name={"products"}
-        products={productData}
+        initialProducts={productData}
         title="Oversized Hoodie Anime"
       />
       <div className="btn-container">
-        <Link to="/products">
+        <Link to="/products/anime">
           <div className="btn-black">Voir Plus</div>
         </Link>
       </div>

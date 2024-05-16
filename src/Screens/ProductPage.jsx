@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 const ProductPage = () => {
   const { id } = useParams();
+
   const product = productData.find((product) => product.id == id);
   const location = useLocation();
   useEffect(() => {
