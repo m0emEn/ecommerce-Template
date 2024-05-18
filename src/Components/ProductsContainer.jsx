@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Product from "./ProductCard";
 const ProductsContainer = ({ name, initialProducts, title, filter }) => {
   return (

@@ -3,10 +3,20 @@ import Berks from "../Components/Berks";
 import ProductsContainer from "../Components/ProductsContainer";
 import ProductsSlider from "../Components/ProductsSlider";
 import banner from "../assets/banner.jpeg";
-import { productData, productSlider } from "../assets/products";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getProducts } from "../redux/actions/productsActions";
+import { useDispatch, useSelector } from "react-redux";
+
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const { loading, error, products } = useSelector((state) => state.product);
+  const productSlider = products.filter((item) => item.category === "femme");
+  const filteredProducts = products.filter((item) => item.category === "anime");
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,7 +35,7 @@ const HomePage = () => {
       <ProductsSlider products={productSlider} />
       <ProductsContainer
         name={"products"}
-        initialProducts={productData}
+        initialProducts={filteredProducts}
         title="Oversized Hoodie Anime"
       />
       <div className="btn-container">

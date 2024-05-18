@@ -1,58 +1,65 @@
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../Components/Breadcrumbs";
 import ProductsContainer from "../Components/ProductsContainer";
-import { productData } from "../assets/products";
 import { useEffect, useState } from "react";
+import { getProducts } from "../redux/actions/productsActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const CategoryProduct = () => {
   const { category } = useParams();
-  const [filter, setFilter] = useState("popularity"); // Default filter value
+  const [filter, setFilter] = useState("popularity");
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.product);
+  const productData = products;
+  let x = [];
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+  const sortProducts = () => {
+    switch (filter) {
+      case "newest":
+        x = [...filteredProducts];
+        x.sort((a, b) => a.id - b.id);
+        setFilteredProducts(x);
+        break;
+      case "price-low":
+        x = [...filteredProducts];
+        x.sort((a, b) => a.newPrice - b.newPrice);
+        setFilteredProducts(x);
+        break;
+      case "price-high":
+        x = [...filteredProducts];
+        x.sort((a, b) => b.newPrice - a.newPrice);
+        setFilteredProducts(x);
+        break;
+      case "popularity":
+        break;
+      default:
+        break;
+    }
+  };
 
-  // Filter products based on category when category changes
   useEffect(() => {
     const filtered = productData.filter((item) => item.category === category);
     setFilteredProducts(filtered);
-  }, [category]);
-
-  // Sort products based on the selected filter
-  useEffect(() => {
-    const sortProducts = () => {
-      switch (filter) {
-        case "newest":
-          setFilteredProducts(
-            [...filteredProducts].sort((a, b) => a.id - b.id)
-          );
-          break;
-        case "price-low":
-          setFilteredProducts(
-            [...filteredProducts].sort((a, b) => a.newPrice - b.newPrice)
-          );
-          break;
-        case "price-high":
-          setFilteredProducts(
-            [...filteredProducts].sort((a, b) => b.newPrice - a.newPrice)
-          );
-          break;
-        default:
-          // "popularity" or unknown filter, do nothing
-          break;
-      }
-    };
-
     sortProducts();
-  }, [filter, filteredProducts]); // Include filteredProducts in the dependency array
+  }, [category, filter]);
 
   return (
     <>
       <div className="container categoryTitle">
-        <h1 className="cTitle">{category}</h1>
+        <div>
+          <h1 className="cTitle">{category}</h1>
+          <Breadcrumbs name={category} />
+        </div>
         <div className="filter">
           <label>Trier Par:</label>
           <select
             value={filter}
             onChange={(e) => {
               setFilter(e.target.value);
+              sortProducts();
             }}
           >
             <option value="popularity">Les plus populaires</option>
@@ -62,7 +69,6 @@ const CategoryProduct = () => {
           </select>
         </div>
       </div>
-      <Breadcrumbs name={category} />
       <ProductsContainer
         name={"products m-0"}
         initialProducts={filteredProducts}

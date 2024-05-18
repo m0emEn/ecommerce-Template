@@ -12,6 +12,17 @@ body {
 }
 a {
   text-decoration: none;
+  color: #000;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide buttons in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 .products.m-0 {
   margin-top: 0;
@@ -30,6 +41,17 @@ a {
   width: fit-content;
   padding: 10px 42px;
   border-radius: 0.3rem;
+  cursor: pointer;
+}
+.btn-white {
+  color: #000;
+  background-color: #fff;
+  width: fit-content;
+  padding: 10px 42px;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 4px;
 }
 .container {
   width: 100%;
@@ -90,17 +112,21 @@ nav {
   display: flex;
   gap: 0 16px;
   position: relative;
+  padding: 1rem;
+}
+.nav-icons svg {
+  cursor: pointer;
 }
 span.cartItems {
   padding: 4px;
   position: absolute;
-  right: -16px;
+  right: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   font-size: 12px;
-  top: -16px;
+  top: 5px;
   height: 14px;
   width: 14px;
   background-color: red;
@@ -681,7 +707,7 @@ footer .social-icons svg {
 .product .qty h5 {
   font-weight: 400;
 }
-.product .qty .qtyControl {
+.qtyControl {
   display: flex;
   gap: 0;
   align-items: center;
@@ -775,16 +801,16 @@ footer .social-icons svg {
 
 .categoryTitle {
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 .filter {
   display: flex;
   gap: 1rem;
-  align-items: center;
+  align-items: flex-start;
 }
 .filter label {
   color: #666666;
+  margin-top: 8px;
 }
 .filter select {
   padding: 12px 18px;
@@ -793,4 +819,266 @@ footer .social-icons svg {
 }
 .cTitle {
   text-transform: uppercase;
+}
+@media screen and (max-width: 534px) {
+  .categoryTitle {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .cTitle {
+    text-align: center;
+  }
+}
+
+/* cart page*/
+
+.cartTable {
+  width: 70%;
+  border-collapse: collapse;
+  height: fit-content;
+}
+.cartTable th {
+  text-align: left;
+  color: #999999;
+  font-weight: 300;
+}
+.cartTable tr {
+  border-bottom: 1px solid #ebebeb;
+  height: 80px;
+}
+.cartTable .qtyControl {
+  width: 80px;
+}
+
+.cartTable .price-col {
+  width: 10%;
+}
+.cartTable .total-col {
+  width: 10%;
+}
+
+.cartTable .qty-col {
+  width: 20%;
+}
+.cartTable .product-cart {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.cartTable .col {
+  padding: 0 6px;
+}
+.product-cart img {
+  width: 60px;
+  aspect-ratio: 1/1;
+}
+.cartTable .remove-col {
+  width: 20px;
+}
+
+.mainCart {
+  display: flex;
+  justify-content: space-between;
+}
+.cartTotal {
+  width: 25%;
+  height: fit-content;
+  border-collapse: collapse;
+}
+.cartTotal thead tr {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+.cartTotal tr {
+  height: 60px;
+}
+.cartTotal td:not(:first-child) {
+  text-align: right;
+}
+.cartTotal .btn-black {
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+}
+.clrSize {
+  font-weight: 300;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.clrSize {
+  text-transform: uppercase;
+}
+@media screen and (max-width: 924px) {
+  .mainCart {
+    flex-direction: column;
+    gap: 5rem;
+  }
+  .cartTable {
+    width: 100%;
+  }
+  .cartTotal {
+    width: 100%;
+  }
+  .cartTotal td:not(:first-child),
+  .cartTotal .btnCol {
+    padding-right: 16px;
+  }
+  .cart {
+    padding-right: 0;
+  }
+}
+@media screen and (max-width: 550px) {
+  .product-cart img {
+    display: none;
+  }
+}
+@media screen and (max-width: 380px) {
+  .cartTable .product-cart p {
+    width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+/* ACCOUNT PAGE*/
+.signContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.mainSign {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  max-width: 550px;
+  box-shadow: 0 3px 16px rgba(51, 51, 51, 0.1);
+  border-radius: 6px;
+  padding: 2rem 1rem;
+  padding-bottom: 3rem;
+  position: relative;
+}
+.signType {
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  width: 80%;
+  z-index: 2;
+}
+.signType button {
+  padding: 12px;
+  width: 50%;
+  font-size: 22px;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid #ebebeb;
+  position: relative;
+}
+.signType button::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: 0.3s;
+}
+.signType .selected::before {
+  opacity: 1;
+}
+.mainSign .login,
+.mainSign .signup {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  gap: 1rem;
+  border-bottom: 1px solid #ebebeb;
+  padding: 2rem 0;
+}
+.mainSign label {
+  font-weight: 300;
+  color: #666666;
+  font-size: 14px;
+}
+.mainSign input {
+  max-width: calc(100% - 3.2rem);
+  font-size: 16px;
+  padding: 1rem 1.6rem;
+  font-weight: 300;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+.mainSign .btn-white,
+.mainSign .btn-black {
+  width: 100%;
+  transition: 0.3s;
+  font-size: 16px;
+}
+.mainSign .btn-white:hover {
+  background-color: #000;
+  color: #fff;
+}
+.mainSign .btn-black:hover {
+  background-color: #fff;
+  color: #000;
+}
+.mainSign .btn-black {
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.mainSign .connect {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.mainSign .connect p {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.mainSign .signup .row {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+.mainSign .signup .row .col {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainSign .shown {
+  display: flex;
+}
+
+@media screen and (max-width: 550px) {
+  .mainSign .signup .row {
+    flex-direction: column;
+  }
+  .mainSign .login,
+  .mainSign .signup {
+    width: 100%;
+  }
+  .accountPage {
+    padding: 8px;
+  }
+  .signType {
+    width: 100%;
+  }
+  .signType button {
+    font-size: 16px;
+  }
 }

@@ -1,14 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { LuUser2 } from "react-icons/lu";
 import { PiShoppingCartSimple } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Socials from "./Socials";
+import { useDispatch, useSelector } from "react-redux";
+import cart from "../redux/slices/cart";
+
 const Nav = () => {
   const [showNav, setShowNav] = useState(false);
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    setShowNav(false);
+  }, [location]);
   return (
     <nav>
       <div className="nav">
@@ -40,8 +49,10 @@ const Nav = () => {
             </Link>
           </div>
           <div className="navMobile-user">
-            <LuUser2 />
-            <span>Mon Compte</span>
+            <Link to={"/account/login"}>
+              <LuUser2 />
+              <span>Mon Compte</span>
+            </Link>
           </div>
           <div className="navMobile-footer">
             <Socials />
@@ -66,15 +77,21 @@ const Nav = () => {
             <div className="nav-link">Enfants</div>
           </Link>
           <div className="nav-icons">
-            <LuUser2 size={19} />
-
-            <PiShoppingCartSimple size={20} />
-            <span className="cartItems">0</span>
+            <Link to={"/account/login"}>
+              <LuUser2 size={19} />
+            </Link>
+            <Link to={"/cart"}>
+              <PiShoppingCartSimple size={20} />
+              <span className="cartItems">{cartItems.length}</span>
+            </Link>
           </div>
         </div>
-        <div className="cartItemsMobile">
-          <PiShoppingCartSimple size={20} />
-          <span>0</span>
+
+        <div className="">
+          <Link to={"/cart"} className="cartItemsMobile">
+            <PiShoppingCartSimple size={20} />
+            <span>{cartItems.length}</span>
+          </Link>
         </div>
       </div>
     </nav>

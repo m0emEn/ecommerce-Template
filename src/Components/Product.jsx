@@ -1,15 +1,21 @@
-import { TiMinus } from "react-icons/ti";
-import { MdAdd } from "react-icons/md";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useState } from "react";
+import { addCartItem } from "../redux/actions/cartActions";
+import { useDispatch, useSelector } from "react-redux";
+import { TiMinus } from "react-icons/ti";
+import { MdAdd } from "react-icons/md";
+import QtyControl from "./QtyControl";
 
 const Product = ({ product }) => {
   const [currColor, setCurrColor] = useState(0);
   const [currSize, setCurrSize] = useState(0);
-  const [qty, setQty] = useState(1);
   const [productImg, setProductImg] = useState(product.mainImg);
   const [productImgIndex, setProductImgIndex] = useState(0);
+  const [qty, setQty] = useState(1);
 
+  const id = product._id;
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
   const colorHandler = (index) => {
     setCurrColor(index);
   };
@@ -19,6 +25,18 @@ const Product = ({ product }) => {
   const imgHandler = (index) => {
     setProductImg(product.availbleImgs[index]);
     setProductImgIndex(index);
+  };
+  const addItem = () => {
+    if (cartItems.some((cartItem) => cartItem.id === id)) {
+      cartItems.find((cartItem) => cartItem.id === id);
+      dispatch(
+        addCartItem(id, qty, product.colors[currColor], product.sizes[currSize])
+      );
+    } else {
+      dispatch(
+        addCartItem(id, qty, product.colors[currColor], product.sizes[currSize])
+      );
+    }
   };
   return (
     <div className="container productContainer">
@@ -110,7 +128,7 @@ const Product = ({ product }) => {
             </div>
           </div>
           <div className="productBtns">
-            <button className="btnAdd btn">
+            <button className="btnAdd btn" onClick={() => addItem()}>
               <MdOutlineAddShoppingCart /> AJOUTER EN PANIER
             </button>
             <button className="btnBuy btn">Acheter maintenant</button>
